@@ -4,7 +4,7 @@ sudo apt-get update
 sudo apt install default-jre -y
 
 # Jenkins
-wget -qO - https://pkg.jenkins.io/debian-stable/jenkins.io.key | apt-key add -
+wget -qO - https://pkg.jenkins.io/debian-stable/jenkins.io.key | sudo apt-key add -
 sudo sh -c 'echo deb http://pkg.jenkins.io/debian-stable binary/ > /etc/apt/sources.list.d/jenkins.list'
 sudo apt-get update
 sudo apt-get install jenkins -y
@@ -32,5 +32,6 @@ sudo mv ./kubectl /usr/local/bin/kubectl
 # Configure access
 usermod -aG docker jenkins
 usermod -aG docker azureuser
-sudo touch /var/lib/jenkins/jenkins.install.InstallUtil.lastExecVersion
+#uncomment to preinstall jenkins plugins
+#sudo touch /var/lib/jenkins/jenkins.install.InstallUtil.lastExecVersion
 service jenkins restart
